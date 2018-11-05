@@ -3394,7 +3394,7 @@ If the file does not exist, it creates the file.</p>
 	<div class="member-content">
 
 		<div class="syntax-box">
-			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;String&gt;&gt; GetFileChunksAsync(Int32 chunkSize)</code></pre>
+			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;QuickIOFileInfo&gt;&gt; GetFileChunksAsync(Int32 chunkSize)</code></pre>
 		</div>		
         
 		
@@ -3657,7 +3657,7 @@ If the file does not exist, it creates the file.</p>
 	<div class="member-content">
 
 		<div class="syntax-box">
-			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;String&gt;&gt; GetFileChunksEqualAsync(QuickIOFileInfo file, Int32 chunkSize)</code></pre>
+			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;QuickIOFileInfo&gt;&gt; GetFileChunksEqualAsync(QuickIOFileInfo file, Int32 chunkSize)</code></pre>
 		</div>		
         
 		
@@ -3853,7 +3853,7 @@ If the file does not exist, it creates the file.</p>
 	<div class="member-content">
 
 		<div class="syntax-box">
-			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;String&gt;&gt; GetFileChunksUnequalAsync(QuickIOFileInfo file, Int32 chunkSize)</code></pre>
+			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;QuickIOFileInfo&gt;&gt; GetFileChunksUnequalAsync(QuickIOFileInfo file, Int32 chunkSize)</code></pre>
 		</div>		
         
 		
@@ -6544,7 +6544,7 @@ Opens both files for read and breaks on first unequal chunk.</p>
 	<div class="member-content">
 
 		<div class="syntax-box">
-			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;String&gt;&gt; ReadAllLinesAsync()</code></pre>
+			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;QuickIOFileInfo&gt;&gt; ReadAllLinesAsync()</code></pre>
 		</div>		
         
 		
@@ -6611,7 +6611,7 @@ Opens both files for read and breaks on first unequal chunk.</p>
 	<div class="member-content">
 
 		<div class="syntax-box">
-			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;String&gt;&gt; ReadAllLinesAsync(Encoding encoding)</code></pre>
+			<pre class="wrap-pre"><code>public Task&lt;IEnumerable&lt;QuickIOFileInfo&gt;&gt; ReadAllLinesAsync(Encoding encoding)</code></pre>
 		</div>		
         
 		

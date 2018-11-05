@@ -4709,7 +4709,7 @@
                      const string targetDirectory = @"C:\transfer_test\to";
              
                      // search files
-                     var files = QuickIODirectory.EnumerateFiles( sourceDirectory, SearchOption.TopDirectoryOnly )
+                     var files = QuickIODirectory.EnumerateFiles( sourceDirectory, "*", SearchOption.TopDirectoryOnly );
              
                      var observer = new QuickIOTransferObserver( );
                      var service = new QuickIOTransferFileCopyService( observer, files, targetDirectory, threadCount: 1, retryCount: 3, overwrite: true );
@@ -4760,7 +4760,7 @@
                     const string targetDirectory = @"C:\transfer_test\to";
              
                     // search files
-                    var files = QuickIODirectory.EnumerateFiles( sourceDirectory, SearchOption.TopDirectoryOnly )
+                     var files = QuickIODirectory.EnumerateFiles( sourceDirectory, "*", SearchOption.TopDirectoryOnly );
              
                     var service = new QuickIOTransferFileCopyService( files, targetDirectory, threadCount: 1, retryCount: 3, overwrite: true );
                     
@@ -4993,7 +4993,7 @@
                    const string targetDirectory = @"C:\transfer_test\to";
             
                    // search files
-                   var files = QuickIODirectory.EnumerateFiles( sourceDirectory, SearchOption.TopDirectoryOnly );
+                    var files = QuickIODirectory.EnumerateFiles( sourceDirectory, "*", SearchOption.TopDirectoryOnly );
             
                    var service = new QuickIOTransferFileCopyService( files, targetDirectory, threadCount: 1, retryCount: 3, overwrite: true );
                    
@@ -5060,7 +5060,7 @@
                    const string targetDirectory = @"C:\transfer_test\to";
             
                    // search files
-                   var files = QuickIODirectory.EnumerateFiles( sourceDirectory, SearchOption.TopDirectoryOnly );
+                   var files = QuickIODirectory.EnumerateFiles( sourceDirectory, "*", SearchOption.TopDirectoryOnly );
             
                    var observer = new QuickIOTransferObserver( );
                    var service = new QuickIOTransferFileCopyService( observer, files, targetDirectory, threadCount: 1, retryCount: 3, overwrite: true );
@@ -7444,6 +7444,219 @@
             <summary>
             Provides static methods for files and directories.
             </summary>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.FileExists(System.String)">
+            <summary>
+            Checks whether a file exists
+            </summary>
+            <param name="path">File path to check</param>
+            <returns></returns>
+            <exception cref="T:SchwabenCode.QuickIO.UnmatchedFileSystemEntryTypeException">Searched for file but found folder.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.InvalidPathException">Path is invalid.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.FileExists(SchwabenCode.QuickIO.QuickIOPathInfo)">
+            <summary>
+            Checks whether a file exists
+            </summary>
+            <param name="pathInfo">File path to check</param>
+            <returns></returns>
+            <exception cref="T:SchwabenCode.QuickIO.UnmatchedFileSystemEntryTypeException">Searched for file but found folder.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.InvalidPathException">Path is invalid.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.DirectoryExists(System.String)">
+            <summary>
+            Checks whether a directory exists
+            </summary>
+            <param name="path">Directory path to verify</param>
+            <returns></returns>
+            <exception cref="T:SchwabenCode.QuickIO.UnmatchedFileSystemEntryTypeException">Searched for directory but found file.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.InvalidPathException">Path is invalid.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.DirectoryExists(SchwabenCode.QuickIO.QuickIOPathInfo)">
+            <summary>
+            Checks whether a directory exists
+            </summary>
+            <param name="pathInfo">Directory path to verify</param>
+            <returns></returns>
+            <exception cref="T:SchwabenCode.QuickIO.UnmatchedFileSystemEntryTypeException">Searched for directory but found file.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.InvalidPathException">Path is invalid.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.CreateFile(System.String,System.IO.FileAccess,System.IO.FileShare,System.IO.FileMode,System.IO.FileAttributes)">
+            <summary>
+            Creates a new file.
+            </summary>
+            <param name="fullName">The path to the file.</param>
+            <param name="fileAccess"><see cref="T:System.IO.FileAccess"/> - default <see cref="F:System.IO.FileAccess.Write"/></param>
+            <param name="fileShare"><see cref="T:System.IO.FileShare"/> - default <see cref="F:System.IO.FileShare.None"/></param>
+            <param name="fileMode"><see cref="T:System.IO.FileMode"/> - default <see cref="F:System.IO.FileMode.Create"/></param>
+            <param name="fileAttributes"><see cref="T:System.IO.FileAttributes"/> - default 0 (none)</param>
+            <exception cref="T:SchwabenCode.QuickIO.PathAlreadyExistsException">The specified path already exists.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.PathNotFoundException">One or more intermediate directories do not exist; this function will only create the final directory in the path.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.CreateDirectory(System.String,System.Boolean)">
+            <summary>
+            Creates a new directory. If <paramref name="recursive"/> is false, the parent directory must exist.
+            </summary>
+            <param name="fullName">The path to the directory.</param>
+            <param name="recursive">If <paramref name="recursive"/> is false, the parent directory must exist.</param>
+            <exception cref="T:SchwabenCode.QuickIO.PathAlreadyExistsException">Path already exists.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.DirectoryNotEmptyException">The directory is not empty.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.DeleteFile(System.String)">
+            <summary>
+            Removes a file.
+            </summary>
+            <param name="fullName">The path to the file. </param>
+            <exception cref="T:SchwabenCode.QuickIO.PathNotFoundException">One or more intermediate directories do not exist; this function will only create the final directory in the path.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">File does not exist.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.DeleteFile(SchwabenCode.QuickIO.QuickIOPathInfo)">
+            <summary>
+            Removes a file.
+            </summary>
+            <param name="pathInfo">The file. </param>
+            <exception cref="T:SchwabenCode.QuickIO.PathNotFoundException">One or more intermediate directories do not exist; this function will only create the final directory in the path.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">File does not exist.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.DeleteFile(SchwabenCode.QuickIO.QuickIOFileInfo)">
+            <summary>
+            Removes a file.
+            </summary>
+            <param name="file">The  file. </param>
+            <exception cref="T:SchwabenCode.QuickIO.PathNotFoundException">One or more intermediate directories do not exist; this function will only create the final directory in the path.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">File does not exist.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.DeleteDirectory(System.String)">
+            <summary>
+            Removes a directory. 
+            </summary>
+            <param name="fullName">The path to the directory. </param>
+            <exception cref="T:SchwabenCode.QuickIO.PathNotFoundException">One or more intermediate directories do not exist; this function will only create the final directory in the path.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.DirectoryNotEmptyException">The directory is not empty.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.DeleteDirectory(SchwabenCode.QuickIO.QuickIOPathInfo)">
+            <summary>
+            Removes a directory. 
+            </summary>
+            <param name="pathInfo">The path of the directory. </param>
+            <exception cref="T:SchwabenCode.QuickIO.PathNotFoundException">One or more intermediate directories do not exist; this function will only create the final directory in the path.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.DirectoryNotEmptyException">The directory is not empty.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.DeleteDirectory(SchwabenCode.QuickIO.QuickIODirectoryInfo)">
+            <summary>
+            Removes a directory. 
+            </summary>
+            <param name="directoryInfo">The directory. </param>
+            <exception cref="T:SchwabenCode.QuickIO.PathNotFoundException">One or more intermediate directories do not exist; this function will only create the final directory in the path.</exception>
+            <exception cref="T:SchwabenCode.QuickIO.DirectoryNotEmptyException">The directory is not empty.</exception>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateFiles(System.String,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a file list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="path">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a file list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateFiles(SchwabenCode.QuickIO.QuickIOPathInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a file list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="pathInfo">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a file list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateFiles(SchwabenCode.QuickIO.QuickIODirectoryInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a file list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="directoryInfo">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a file list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateFilePaths(System.String,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a file path list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="path">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a file path list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateFilePaths(SchwabenCode.QuickIO.QuickIOPathInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a file path list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="path">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a file path list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateFilePaths(SchwabenCode.QuickIO.QuickIODirectoryInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a file path list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="directoryInfo">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a file path list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateDirectories(System.String,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a directory list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="path">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a directory list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateDirectories(SchwabenCode.QuickIO.QuickIOPathInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a directory list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="pathInfo">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a directory list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateDirectories(SchwabenCode.QuickIO.QuickIODirectoryInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a directory list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="directoryInfo">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a directory list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateDirectoryPaths(System.String,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a directory path list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="path">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a directory path list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateDirectoryPaths(SchwabenCode.QuickIO.QuickIOPathInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a directory path list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="pathInfo">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a directory path list from the current directory</returns>
+        </member>
+        <member name="M:SchwabenCode.QuickIO.QuickIO.EnumerateDirectoryPaths(SchwabenCode.QuickIO.QuickIODirectoryInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Returns a directory path list from the current directory using a value to determine whether to search subdirectories.
+            </summary>
+            <param name="directoryInfo">Rootpath</param>
+            <param name="pattern">Search pattern. Uses Win32 native filtering.</param>
+            <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+            <returns>Returns a directory path list from the current directory</returns>
         </member>
         <member name="M:SchwabenCode.QuickIO.QuickIO.GetDiskInformation(System.String)">
             <summary>

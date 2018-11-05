@@ -26,7 +26,7 @@ namespace SchwabenCode.QuickIO
         /// <param name="enumerateOptions">Options <see cref="QuickIOEnumerateOptions"/></param>
         /// <returns>An enumerable collection of the full names (including paths) for the directories in the directory specified by path.</returns>
         /// <remarks>http://msdn.microsoft.com/en-us/library/dd383304(v=vs.110).aspx</remarks>
-        public static IEnumerable<string> EnumerateDirectoryPaths( string path,String pattern = QuickIOPatternConstants.All, SearchOption searchOption = SearchOption.TopDirectoryOnly, QuickIOPathType pathFormatReturn = QuickIOPathType.Regular, QuickIOEnumerateOptions enumerateOptions = QuickIOEnumerateOptions.None )
+        public static IEnumerable<string> EnumerateDirectoryPaths( string path, String pattern = QuickIOPatternConstants.All, SearchOption searchOption = SearchOption.TopDirectoryOnly, QuickIOPathType pathFormatReturn = QuickIOPathType.Regular, QuickIOEnumerateOptions enumerateOptions = QuickIOEnumerateOptions.None )
         {
             return EnumerateDirectoryPaths( new QuickIOPathInfo( path ), pattern, searchOption, pathFormatReturn, enumerateOptions );
         }
@@ -41,7 +41,7 @@ namespace SchwabenCode.QuickIO
         /// <param name="enumerateOptions">Options <see cref="QuickIOEnumerateOptions"/></param>
         /// <returns>An enumerable collection of the full names (including paths) for the directories in the directory specified by path.</returns>
         /// <remarks>http://msdn.microsoft.com/en-us/library/dd383304(v=vs.110).aspx</remarks>
-        public static IEnumerable<string> EnumerateDirectoryPaths( QuickIODirectoryInfo directoryInfo,String pattern = QuickIOPatternConstants.All, SearchOption searchOption = SearchOption.TopDirectoryOnly, QuickIOPathType pathFormatReturn = QuickIOPathType.Regular, QuickIOEnumerateOptions enumerateOptions = QuickIOEnumerateOptions.None )
+        public static IEnumerable<string> EnumerateDirectoryPaths( QuickIODirectoryInfo directoryInfo, String pattern = QuickIOPatternConstants.All, SearchOption searchOption = SearchOption.TopDirectoryOnly, QuickIOPathType pathFormatReturn = QuickIOPathType.Regular, QuickIOEnumerateOptions enumerateOptions = QuickIOEnumerateOptions.None )
         {
             return EnumerateDirectoryPaths( directoryInfo.PathInfo, pattern, searchOption, pathFormatReturn, enumerateOptions );
         }
@@ -56,7 +56,7 @@ namespace SchwabenCode.QuickIO
         /// <param name="enumerateOptions">Options <see cref="QuickIOEnumerateOptions"/></param>
         /// <returns>An enumerable collection of the full names (including paths) for the directories in the directory specified by path.</returns>
         /// <remarks>http://msdn.microsoft.com/en-us/library/dd383304(v=vs.110).aspx</remarks>
-        public static IEnumerable<string> EnumerateDirectoryPaths( QuickIOPathInfo info,String pattern = QuickIOPatternConstants.All, SearchOption searchOption = SearchOption.TopDirectoryOnly, QuickIOPathType pathFormatReturn = QuickIOPathType.Regular, QuickIOEnumerateOptions enumerateOptions = QuickIOEnumerateOptions.None )
+        public static IEnumerable<string> EnumerateDirectoryPaths( QuickIOPathInfo info, String pattern = QuickIOPatternConstants.All, SearchOption searchOption = SearchOption.TopDirectoryOnly, QuickIOPathType pathFormatReturn = QuickIOPathType.Regular, QuickIOEnumerateOptions enumerateOptions = QuickIOEnumerateOptions.None )
         {
             return InternalQuickIO.EnumerateDirectoryPaths( info.FullNameUnc, pattern, searchOption, enumerateOptions, pathFormatReturn );
         }

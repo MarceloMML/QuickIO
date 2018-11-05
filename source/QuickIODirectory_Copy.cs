@@ -42,7 +42,7 @@ namespace SchwabenCode.QuickIO
             Invariant.NotNull( source );
             Invariant.NotNull( target );
 
-            var allContentUncPaths = EnumerateFileSystemEntryPaths( source, searchOption: SearchOption.AllDirectories, pathFormatReturn: QuickIOPathType.UNC );
+            var allContentUncPaths = EnumerateFileSystemEntryPaths( source, QuickIOPatternConstants.All, SearchOption.AllDirectories, QuickIOPathType.UNC );
             foreach ( var entry in allContentUncPaths )
             {
                 string sourcePathUnc = entry.Key;

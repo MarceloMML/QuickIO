@@ -31,7 +31,7 @@ namespace SchwabenCode.QuickIO.Transfer
     ///         const string targetDirectory = @"C:\transfer_test\to";
     /// 
     ///         // search files
-    ///         var files = QuickIODirectory.EnumerateFiles( sourceDirectory, SearchOption.TopDirectoryOnly )
+    ///         var files = QuickIODirectory.EnumerateFiles( sourceDirectory, "*", SearchOption.TopDirectoryOnly );
     /// 
     ///         var observer = new QuickIOTransferObserver( );
     ///         var service = new QuickIOTransferFileCopyService( observer, files, targetDirectory, threadCount: 1, retryCount: 3, overwrite: true );
@@ -82,7 +82,7 @@ namespace SchwabenCode.QuickIO.Transfer
     ///        const string targetDirectory = @"C:\transfer_test\to";
     /// 
     ///        // search files
-    ///        var files = QuickIODirectory.EnumerateFiles( sourceDirectory, SearchOption.TopDirectoryOnly )
+    ///         var files = QuickIODirectory.EnumerateFiles( sourceDirectory, "*", SearchOption.TopDirectoryOnly );
     /// 
     ///        var service = new QuickIOTransferFileCopyService( files, targetDirectory, threadCount: 1, retryCount: 3, overwrite: true );
     ///        
@@ -310,7 +310,7 @@ namespace SchwabenCode.QuickIO.Transfer
         ///        const string targetDirectory = @"C:\transfer_test\to";
         /// 
         ///        // search files
-        ///        var files = QuickIODirectory.EnumerateFiles( sourceDirectory, SearchOption.TopDirectoryOnly );
+        ///         var files = QuickIODirectory.EnumerateFiles( sourceDirectory, "*", SearchOption.TopDirectoryOnly );
         /// 
         ///        var service = new QuickIOTransferFileCopyService( files, targetDirectory, threadCount: 1, retryCount: 3, overwrite: true );
         ///        
@@ -381,7 +381,7 @@ namespace SchwabenCode.QuickIO.Transfer
         ///        const string targetDirectory = @"C:\transfer_test\to";
         /// 
         ///        // search files
-        ///        var files = QuickIODirectory.EnumerateFiles( sourceDirectory, SearchOption.TopDirectoryOnly );
+        ///        var files = QuickIODirectory.EnumerateFiles( sourceDirectory, "*", SearchOption.TopDirectoryOnly );
         /// 
         ///        var observer = new QuickIOTransferObserver( );
         ///        var service = new QuickIOTransferFileCopyService( observer, files, targetDirectory, threadCount: 1, retryCount: 3, overwrite: true );
